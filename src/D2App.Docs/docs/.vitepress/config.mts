@@ -4,8 +4,14 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   vite: {
     server: {
-      port: 3000,
-      host: '0.0.0.0'
+      port: 8000,
+      host: '0.0.0.0',
+      strictPort: true,
+      https: {
+        key: 'D:\\certs\\cert.key',
+        cert: 'D:\\certs\\cert.crt'
+      }
+
     }
   },
   title: "D2App Docs",
