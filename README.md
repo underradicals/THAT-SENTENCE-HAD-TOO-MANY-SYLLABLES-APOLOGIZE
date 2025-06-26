@@ -1,2 +1,1 @@
-# THAT-SENTENCE-HAD-TOO-MANY-SYLLABLES-APOLOGIZE
-App for exploring Destiny2 Data
+# D2App
