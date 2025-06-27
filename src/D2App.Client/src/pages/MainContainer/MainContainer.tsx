@@ -1,4 +1,6 @@
-import type { MainContainerProps } from "@/types";
+interface MainContainerProps {
+  children: React.ReactNode;
+}
 
 function MainContainer({ children }: MainContainerProps) {
   return <>

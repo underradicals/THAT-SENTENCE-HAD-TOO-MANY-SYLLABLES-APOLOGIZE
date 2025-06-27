@@ -1,5 +1,5 @@
-import '@/pages/MainLayout.scss';
 import { Outlet } from 'react-router';
+import '@/pages/MainLayout.scss';
 
 
 function MainLayout() {
