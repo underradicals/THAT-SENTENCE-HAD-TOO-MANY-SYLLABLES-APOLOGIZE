@@ -7,13 +7,13 @@ layout: doc
 
 # What is CORS?
 
----
+## Introduction
 
 CORS which stands for **Cross-Origin Resource Sharing** is a protocol built on top of the HTTP protocol that allows sharing responses across origins. Origins are a fundamental aspect of the web's security model which is colloquially known as `Same-Origin Policy`.
 
 You see, [User-Agents](../glossary/http.md) often have to execute actions on behalf of [remote parties](../glossary/http.md): Without **SOP** there do not exist any layers of isolation. Javascript from `attacker.com` can read data at `mail.company.com`.
 
-### What is an Origin
+## What is an Origin
 
 An **Origin** is comprised of three parts:
 
@@ -29,7 +29,7 @@ An **Origin** is comprised of three parts:
 ::: tip URL Parts
 There are other parts of a `Host` that are **NOT** considered when checking if two actors share the same origin. For example:
 
-##### https://example.com:443/blog/article/slug?id=1234&lang=en#dayone
+> https://example.com:443/blog/article/slug?id=1234&lang=en#dayone
 
 - Path: `/blog/article/slug`
 - Query Parameters: `?id=1234&lang=en`

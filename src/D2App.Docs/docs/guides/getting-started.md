@@ -13,7 +13,7 @@ Welcome to the **Guides** section of the D2App documentation. This area provides
 
 ---
 
-### 🧰 Project Setup & Local Development
+## 🧰 Project Setup & Local Development
 
 Get your development environment up and running quickly and reliably.
 
@@ -31,7 +31,7 @@ This guide does _not_ cover CI/CD, production deployment, or infrastructure auto
 
 ---
 
-### 🔐 Authentication & Authorization Flows
+## 🔐 Authentication & Authorization Flows
 
 Understand how user access is managed throughout the platform using modern identity protocols.
 
@@ -49,7 +49,7 @@ This section focuses on D2App’s implementation. It does not explore deep OAuth
 
 ---
 
-### 🔗 API Usage & Integration Patterns
+## 🔗 API Usage & Integration Patterns
 
 Leverage and extend the D2App Web API effectively using standardized integration patterns.
 
@@ -66,7 +66,7 @@ Database design and ORM behavior are outside the scope of this section. Refer to
 
 ---
 
-### 🔄 Frontend ↔ Backend Communication
+## 🔄 Frontend ↔ Backend Communication
 
 Ensure smooth and secure data flow between the client and the server layers.
 
@@ -83,7 +83,7 @@ This guide does not delve into frontend state management or backend storage logi
 
 ---
 
-### 🚢 Deployment & Environment Configuration
+## 🚢 Deployment & Environment Configuration
 
 Prepare and configure your application for consistent behavior across environments.
 
@@ -100,7 +100,7 @@ This section excludes CI/CD pipelines and infrastructure provisioning. See the D
 
 ---
 
-### 🛠️ Troubleshooting Common Issues
+## 🛠️ Troubleshooting Common Issues
 
 Quick solutions to frequent development and integration blockers.
 

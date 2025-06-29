@@ -72,6 +72,7 @@ export default defineConfig({
       '/guides/': [
         {
           text: 'Introduction',
+          collapsed: false,
           items: [
             { text: 'What are patterns?', link: '/guides/index' },
             { text: 'Getting Started', link: '/guides/getting-started.md' }
@@ -79,6 +80,7 @@ export default defineConfig({
         },
         {
           text: 'CORS',
+          collapsed: false,
           items: [
             { text: 'What is CORS?', link: '/guides/what-is-cors' },
             { text: 'Naive Implementation', link: '/guides/naive-solution' },
@@ -108,7 +110,7 @@ export default defineConfig({
       copyright: 'Copyright © 2025 Underradicals Group'
     },
     aside: true,
-    outline: 2
+    outline: [2, 4]
   },
   markdown: {
     math: true,
