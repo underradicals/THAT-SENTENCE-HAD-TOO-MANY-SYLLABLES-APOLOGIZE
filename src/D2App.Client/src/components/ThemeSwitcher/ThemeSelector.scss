@@ -1,0 +1,87 @@
+select,
+::picker(select) {
+  appearance: base-select;
+}
+
+select {
+  border: 1px solid var(--tc-primary);
+  background: var(--bg-primary);
+  padding: 10px;
+  transition: 0.4s;
+  background-color: var(--bg-primary);
+  color: var(--tc-primary);
+  padding-inline-start: 0.5rem;
+  padding-inline-end: 0;
+  padding-block: 0;
+  min-width: 100%;
+}
+
+select option {
+  padding-block: 0.5rem;
+
+  &:hover {
+    background: var(--option-hover-bg);
+    color: var(--tc-secondary);
+  }
+
+  &:hover::checkmark {
+    color: red;
+  }
+}
+
+selectedcontent {
+  display: block;
+  font-size: 1.2rem;
+  place-content: center;
+}
+
+select:hover {
+  background: var(--bg-primary-hover);
+}
+
+select:open::picker-icon {
+  rotate: 180deg;
+}
+
+select::picker-icon {
+  position: relative;
+  padding-inline: 1rem;
+  padding-block: 0.5rem;
+  color: var(--tc-primary);
+  transition: 0.4s rotate;
+
+  &::before {
+    position: absolute;
+    content: "";
+    display: block;
+    width: 100px;
+    height: 20px;
+    background-color: black;
+  }
+}
+
+::picker(select) {
+  display: block;
+  border: none;
+  opacity: 0;
+  transition: all 0.4s allow-discrete;
+}
+
+::picker(select):popover-open {
+  opacity: 1;
+  background-color: var(--pop-over-bg);
+}
+
+@starting-style {
+  ::picker(select):popover-open {
+    opacity: 0;
+  }
+}
+
+::picker(select) {
+  top: calc(anchor(bottom) + 1px);
+}
+
+::checkmark {
+  color: var(--checkmark-color);
+}

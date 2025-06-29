@@ -4,8 +4,14 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   vite: {
     server: {
-      port: 3000,
-      host: '0.0.0.0'
+      port: 8000,
+      host: '0.0.0.0',
+      strictPort: true,
+      https: {
+        key: 'D:\\certs\\cert.key',
+        cert: 'D:\\certs\\cert.crt'
+      }
+
     }
   },
   title: "D2App Docs",
@@ -21,6 +27,7 @@ export default defineConfig({
       { text: 'Architecture', link: '/architecture' },
       { text: 'API', link: '/api' },
       { text: 'Guides', link: '/guides' },
+      { text: 'Glossary', link: '/glossary' },
       { text: 'Team', link: '/team' }
     ],
 
@@ -33,7 +40,7 @@ export default defineConfig({
             { text: 'Getting Started', link: '/pm/getting-started' },
             { text: 'Project Charter', link: '/pm/project-charter' },
           ]
-        }
+        },
       ],
       '/design/': [
         {
@@ -65,10 +72,30 @@ export default defineConfig({
       '/guides/': [
         {
           text: 'Introduction',
+          collapsed: false,
           items: [
             { text: 'What are patterns?', link: '/guides/index' },
             { text: 'Getting Started', link: '/guides/getting-started.md' }
           ]
+        },
+        {
+          text: 'CORS',
+          collapsed: false,
+          items: [
+            { text: 'What is CORS?', link: '/guides/what-is-cors' },
+            { text: 'Naive Implementation', link: '/guides/naive-solution' },
+            { text: 'Naive Refactor', link: '/guides/naive-refactor' }
+          ]
+        }
+      ],
+      '/glossary/': [
+        {
+          text: 'Definitions',
+          items: [
+            { text: 'CORS', link: '/glossary/cors' },
+            { text: 'HTTP1.1', link: '/glossary/http' },
+          ]
+
         }
       ]
     },
@@ -83,9 +110,10 @@ export default defineConfig({
       copyright: 'Copyright © 2025 Underradicals Group'
     },
     aside: true,
-    outline: 2
+    outline: [2, 4]
   },
   markdown: {
-    math: true
+    math: true,
+    lineNumbers: true
   }
 })

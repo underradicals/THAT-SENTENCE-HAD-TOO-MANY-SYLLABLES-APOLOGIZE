@@ -1,0 +1,323 @@
+@layer layout, reset;
+
+:root {
+  --base-font-family: system-ui;
+  --heading-font-family: system-ui;
+  --code-font-family: monospace;
+  --grid-flow-gap: 1rem;
+
+  --body-max-width: 75ch;
+
+  --theme: light;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  color-scheme: light;
+
+  @media (prefers-color-scheme: dark) {
+    --theme: dark;
+    color-scheme: dark;
+  }
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  overscroll-behavior: contain;
+}
+
+html {
+  hanging-punctuation: first last;
+  text-size-adjust: none;
+  font-family: var(--base-font-family), sans-serif;
+  font-feature-settings: "kern", "liga", "clig", "calt", "dlig", "ss01", "ss02",
+    "ss03", "ss04", "ss05", "ss06", "ss07", "ss08", "ss09", "ss10", "ss11",
+    "ss12", "ss13", "ss14", "ss15";
+  font-variation-settings: "wght" 400, "wdth" 100;
+  box-sizing: inherit;
+  background-color: var(--bg-primary);
+  color: var(--tc-primary);
+  interpolate-size: allow-keywords;
+}
+
+:root:has([value="light"]:checked) {
+  --theme: light;
+  color-scheme: light;
+}
+
+:root:has([value="dark"]:checked) {
+  --theme: dark;
+  color-scheme: dark;
+}
+
+body {
+  margin-inline: 0;
+  margin-block: 0;
+  min-height: 100svh;
+  line-height: 1.5;
+  background-color: var(--bg-primary);
+  color: var(--tc-primary);
+
+  --bg-primary: #e0e0e0;
+  --bg-primary-hover: #bbbbbb;
+  --tc-primary: #242424;
+  --tc-secondary: whitesmoke;
+  --checkmark-color: blue;
+  --pop-over-bg: white;
+  --option-hover-bg: #015fb8;
+  @container style(--theme: dark) {
+    --bg-primary: #242424;
+    --bg-primary-hover: #424242;
+    --tc-primary: #e0e0e0;
+    --checkmark-color: red;
+    --pop-over-bg: #2c2c2c;
+    --option-hover-bg: #0078d4;
+    --tc-secondary: whitesmoke;
+  }
+}
+
+body > :is(header, footer),
+main,
+section,
+article {
+  container-type: inline-size;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  // Prevents orphans and widows in headings
+  text-wrap: balance;
+  font-family: var(--heading-font-family), sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+button,
+input,
+label {
+  line-height: 1.1;
+}
+
+p,
+li,
+figcaption {
+  max-width: 65ch;
+  // Prevents orphans and widows in paragraphs, lists, and figure captions
+  text-wrap: pretty;
+}
+
+img {
+  max-width: 100%;
+  // Ensures images align with text baseline without changing it's block type
+  vertical-align: middle;
+  // Maintain aspect ratio;
+  height: auto;
+  font-style: italic;
+  background-repeat: no-repeat;
+  background-size: cover;
+  shape-margin: 1rem;
+}
+
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+  color: currentColor;
+}
+
+input,
+button,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+textarea:not([rows]) {
+  min-height: 10em;
+}
+
+:is(ul, ol)[class] {
+  list-style: "";
+  margin-block: 0;
+  margin-inline: 0;
+  padding-inline: 0;
+  padding-block: 0;
+}
+
+td,
+math,
+time[datetime*=":"] {
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+:target {
+  scroll-margin-block: 2lh;
+}
+
+button:not(:disabled) {
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :has(:target) {
+    scroll-behavior: smooth;
+    scroll-padding-top: 2rem;
+  }
+
+  main {
+    scroll-snap-type: y mandatory;
+  }
+}
+
+/** LAYOUT STYLES **/
+.flex-group {
+  display: flex;
+  gap: 0.5rem 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: start;
+}
+
+.grid-auto-flow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  gap: 1rem;
+}
+
+// This is for creating a consistent gap between items in a layout: Meaningful for articles, sections, etc.
+.flow > * + * {
+  margin-block-start: var(--grid-flow-gap, 1em);
+}
+
+// This is for creating a consistent gap between items in a layout: Meaningful cards, and non typography heavy layouts.
+.grid-flow {
+  display: grid;
+  gap: var(--grid-flow-gap, 1rem);
+  justify-items: start;
+
+  > * {
+    margin: 0;
+  }
+}
+
+.page-layout > *,
+.full-width > * {
+  grid-column: content;
+}
+.page-layout,
+.full-width {
+  --minimum-content-padding: 2rem;
+
+  /** TRACK WIDTHS **/
+  --full-max-width: 1fr;
+  --popout-max-width: 1280px;
+  --content-max-width: 980px;
+  --inset-content-max-width: 840px;
+
+  /** TRACK SIZES **/
+  --full: minmax(var(--minimum-content-padding), 1fr);
+  --popout: minmax(
+    0,
+    calc((var(--popout-max-width) - var(--content-max-width)) * 0.5)
+  );
+  --content: minmax(
+    0,
+    calc((var(--content-max-width) - var(--inset-content-max-width)) * 0.5)
+  );
+  --inset-content: min(
+    var(--inset-content-max-width),
+    100% - var(--minimum-content-padding) * 2
+  );
+
+  display: grid;
+  grid-template-columns:
+    [full-start]
+    var(--full)
+    [popout-start]
+    var(--popout)
+    [content-start]
+    var(--content)
+    [inset-content-start]
+    var(--inset-content)
+    [inset-content-end]
+    var(--content)
+    [content-end]
+    var(--popout)
+    [popout-end]
+    var(--full)
+    [full-end];
+}
+
+/** CLASSES **/
+.full {
+  grid-column: full;
+}
+.full-start {
+  grid-column-start: full-start;
+}
+.full-end {
+  grid-column-end: full-end;
+}
+
+.popout {
+  grid-column: popout;
+}
+.popout-start {
+  grid-column-start: popout-start;
+}
+.popout-end {
+  grid-column-end: popout-end;
+}
+
+.content {
+  grid-column: content;
+}
+.content-start {
+  grid-column-start: content-start;
+}
+.content-end {
+  grid-column-end: content-end;
+}
+
+.inset-content {
+  grid-column: inset-content;
+}
+.inset-content-start {
+  grid-column-start: inset-content-start;
+}
+.inset-content-end {
+  grid-column-end: inset-content-end;
+}
+
+.full-width {
+  grid-column: full;
+}
+.full-content,
+.full-content-nopad {
+  grid-column: full;
+}
+.full-content {
+  padding-inline: var(--minimum-content-padding);
+}
+
+/** LAYOUT STYLES **/
+
+.card {
+  background-color: white;
+}
