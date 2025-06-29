@@ -27,6 +27,7 @@ export default defineConfig({
       { text: 'Architecture', link: '/architecture' },
       { text: 'API', link: '/api' },
       { text: 'Guides', link: '/guides' },
+      { text: 'Glossary', link: '/glossary' },
       { text: 'Team', link: '/team' }
     ],
 
@@ -39,7 +40,7 @@ export default defineConfig({
             { text: 'Getting Started', link: '/pm/getting-started' },
             { text: 'Project Charter', link: '/pm/project-charter' },
           ]
-        }
+        },
       ],
       '/design/': [
         {
@@ -75,6 +76,24 @@ export default defineConfig({
             { text: 'What are patterns?', link: '/guides/index' },
             { text: 'Getting Started', link: '/guides/getting-started.md' }
           ]
+        },
+        {
+          text: 'CORS',
+          items: [
+            { text: 'What is CORS?', link: '/guides/what-is-cors' },
+            { text: 'Naive Implementation', link: '/guides/naive-solution' },
+            { text: 'Naive Refactor', link: '/guides/naive-refactor' }
+          ]
+        }
+      ],
+      '/glossary/': [
+        {
+          text: 'Definitions',
+          items: [
+            { text: 'CORS', link: '/glossary/cors' },
+            { text: 'HTTP1.1', link: '/glossary/http' },
+          ]
+
         }
       ]
     },
@@ -92,6 +111,7 @@ export default defineConfig({
     outline: 2
   },
   markdown: {
-    math: true
+    math: true,
+    lineNumbers: true
   }
 })

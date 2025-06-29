@@ -1,16 +1,20 @@
+using D2App.WebApi.Configurations;
+
 try
 {
     SerilogApplicationExtensions.AddBootStrapsBootStrap();
     Log.Information("Starting the application...");
 
     var builder = WebApplication.CreateBuilder(args);
-    
+    var configuration = builder.Configuration;
     builder.AddSerilogServices();
+    builder.Services.AddDefaultD2AppCorsConfiguration(configuration);
 
     builder.Services.AddOpenApi();
 
     var app = builder.Build();
 
+    app.UseD2AppCorsConfiguration(configuration);
     app.UseSerilogMiddleware();
 
     if (app.Environment.IsDevelopment())
@@ -19,9 +23,9 @@ try
     }
 
     app.UseHttpsRedirection();
-    
-    app.MapGet("/", () => new { message = "Hello World!"});
-    
+
+    app.MapGet("/", () => new { message = "Hello World!" });
+
     app.Run();
 }
 catch (Exception ex)
@@ -39,8 +43,8 @@ finally
 
 /* 
    TODO:
-   - Add Logging
-   - Add Cors support
+   ✔️ Add Logging
+   ✔️ Add Cors support
    - Add Health Checks
    - Add Contexts
    - Add HTTPClient
