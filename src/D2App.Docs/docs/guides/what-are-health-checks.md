@@ -9,10 +9,6 @@ layout: doc
 
 ---
 
-Here's a concise, professional summary suitable for documentation, explaining what health checks are, what they do, and why they’re not trivial:
-
----
-
 ## ✅ Health Checks in .NET Core Web APIs
 
 ### 📌 What Are Health Checks?
