@@ -8,6 +8,7 @@ try
     var builder = WebApplication.CreateBuilder(args);
     var configuration = builder.Configuration;
     builder.AddSerilogServices();
+    builder.Services.AddD2HealthChecks();
     builder.Services.AddDefaultD2AppCorsConfiguration(configuration);
 
     builder.Services.AddOpenApi();
@@ -24,6 +25,7 @@ try
 
     app.UseHttpsRedirection();
 
+    app.UseD2HealthChecks();
     app.MapGet("/", () => new { message = "Hello World!" });
 
     app.Run();
@@ -45,7 +47,7 @@ finally
    TODO:
    ✔️ Add Logging
    ✔️ Add Cors support
-   - Add Health Checks
+   ✔️ Add Health Checks
    - Add Contexts
    - Add HTTPClient
    - Add API Versioning
