@@ -12,7 +12,7 @@ public static class CorsExtensions
         return services;
     }
 
-    public static Action<CorsOptions> CorsOptionsAction(IConfiguration configuration)
+    private static Action<CorsOptions> CorsOptionsAction(IConfiguration configuration)
     {
         var action = DefaultCorsPolicyAction(configuration);
         return (options) =>
@@ -22,7 +22,7 @@ public static class CorsExtensions
         };
     }
 
-    public static Action<CorsPolicyBuilder> DefaultCorsPolicyAction(IConfiguration configuration)
+    private static Action<CorsPolicyBuilder> DefaultCorsPolicyAction(IConfiguration configuration)
     {
         var v = configuration[Consts.DEFAULT_CORS_SETTINGS_CLIENT_URL]!;
         return (builder) =>
