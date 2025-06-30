@@ -86,6 +86,14 @@ export default defineConfig({
             { text: 'Naive Implementation', link: '/guides/naive-solution' },
             { text: 'Naive Refactor', link: '/guides/naive-refactor' }
           ]
+        },
+        {
+          text: 'Health Checks',
+          collapsed: false,
+          items: [
+            { text: 'What are Health Checks?', link: '/guides/what-are-health-checks' },
+            { text: 'Health Check Implementation', link: '/guides/health-check-implementation' },
+          ]
         }
       ],
       '/glossary/': [
