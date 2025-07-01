@@ -1,4 +1,6 @@
 using D2App.WebApi.Configurations;
+using D2App.WebApi.Features.Get.Manifest;
+using D2App.WebApi.HttpClients;
 
 try
 {
@@ -12,6 +14,10 @@ try
     builder.Services.AddDefaultD2AppCorsConfiguration(configuration);
 
     builder.Services.AddOpenApi();
+
+    builder.Services.AddTransient<IManifestHttpClient, ManifestHttpClient>();
+
+    builder.Services.AddHttpClientFactoryServices();
 
     var app = builder.Build();
 
@@ -27,6 +33,7 @@ try
 
     app.UseD2HealthChecks();
     app.MapGet("/", () => new { message = "Hello World!" });
+    app.UseManifestEndpoint();
 
     app.Run();
 }
